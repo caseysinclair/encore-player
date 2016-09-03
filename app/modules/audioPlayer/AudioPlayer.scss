@@ -1,0 +1,17 @@
+.container {
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+}
+
+.contents {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 12.5px 7.5px;
+}
+
+.base {
+  background-color: #eee;
+  border-top: solid 2px #ccc;
+}

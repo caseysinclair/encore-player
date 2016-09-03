@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  width: 60%;
+}
+
+.timer {
+  font: normal .8em Arial, Helvetica, sans-serif;
+  padding: 0 10px;
+}
+
+.progress {
+  flex: 1 0 auto;
+  align-self: center;
+  height: 3px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.track {
+  display: flex;
+  outline: solid 1px red;
+  border: solid 1px #eee;
+  transition: width 0.111s linear;
+}
