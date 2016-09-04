@@ -6,7 +6,7 @@
   "scripts": {
     "test": "npm test",
     "lint": "./node_modules/.bin/eslint ./app",
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server --open"
   },
   "author": "Casey sinclair",
   "license": "ISC",
@@ -34,6 +34,10 @@
     "moment": "^2.14.1",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
+    "react-redux": "^4.4.5",
+    "redux": "^3.5.2",
+    "redux-devtools": "^3.3.1",
+    "redux-logger": "^2.6.1",
     "scss-loader": "0.0.1",
     "style-loader": "^0.13.0",
     "url-loader": "^0.5.7"
