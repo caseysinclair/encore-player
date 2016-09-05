@@ -1,6 +1,7 @@
 export const PLAY_AUDIO = 'PLAY_AUDIO';
 export const STOP_AUDIO = 'STOP_AUDIO';
 export const SET_PROGRESS = 'SET_PROGRESS';
+export const SET_DURATION = 'SET_DURATION';
 
 export function play() {
   return {
@@ -17,6 +18,13 @@ export function stop() {
 export function progress(val) {
   return {
     type: SET_PROGRESS,
+    val
+  }
+}
+
+export function duration(val) {
+  return {
+    type: SET_DURATION,
     val
   }
 }

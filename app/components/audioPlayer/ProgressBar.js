@@ -1,9 +1,5 @@
 import React from 'react';
 import styles from './ProgressBar.scss';
-import Moment from 'moment';
-
-const PLAYER_TIMER_FORMAT_M_SS = 'm:ss';
-const PLAYER_TIMER_FORMAT_BASE = '2000-01-01 00:00:00';
 
 const ProgressBar = ({total, progress}) => {
 
@@ -11,8 +7,11 @@ const ProgressBar = ({total, progress}) => {
     return ((e.pageX - e.currentTarget.getBoundingClientRect().left) / e.currentTarget.offsetWidth * total);
   };
 
-  const formatAudioTime = (milliseconds) => {
-    return Moment(PLAYER_TIMER_FORMAT_BASE).add(Moment.duration(milliseconds)).format(PLAYER_TIMER_FORMAT_M_SS);
+  const handleTimeFormat = (value) => {
+    var min = Math.floor(value / 59, 10).toPrecision(1);
+    var sec = (value % 59).toFixed(0) < 10 ? 0 + (value % 59).toFixed(0) : (value % 59).toFixed(0);
+
+    return min + ':' + sec;
   };
 
   const renderTotal = () => {
@@ -26,7 +25,7 @@ const ProgressBar = ({total, progress}) => {
   const renderProgress = () => {
     return (
       <div className={styles.timer} >
-        <span>{progress}</span>
+        <span>{handleTimeFormat(progress)}</span>
       </div>
     )
   };

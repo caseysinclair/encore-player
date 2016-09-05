@@ -2,9 +2,8 @@ import React from 'react';
 import styles from './AudioPlayer.scss';
 import ProgressBar from './ProgressBar';
 import bindAll from 'lodash/bindall';
-//import {formatAudioTime} from './audioUtils';
 
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import {play, stop, progress} from './actions/audioPlayerActions';
 
 class AudioPlayer extends React.Component {
@@ -30,10 +29,9 @@ class AudioPlayer extends React.Component {
 
   handlePaused(player) {
     this.props.stop()
-
   }
 
-  playback() {
+   playback() {
     const player = document.querySelector('audio');
 
     if (player.paused) {
@@ -51,9 +49,9 @@ class AudioPlayer extends React.Component {
     )
   }
 
-  renderAudioElement() {
+   renderAudioElement() {
     return (
-      <audio src={'https://www.freesound.org/data/previews/353/353025_110287-lq.mp3'} />
+      <audio src={'https://www.freesound.org/data/previews/353/353025_110287-lq.mp3'}/>
     )
   }
 

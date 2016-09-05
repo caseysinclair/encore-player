@@ -1,9 +1,10 @@
-import { PLAY_AUDIO, STOP_AUDIO, SET_PROGRESS } from '../actions/audioPlayerActions';
+import { PLAY_AUDIO, STOP_AUDIO, SET_PROGRESS, SET_DURATION } from '../actions/audioPlayerActions';
 
 const init = () => {
    return {
      playing: false,
      progress: 0,
+     duration: 0,
    }
 };
 
@@ -20,6 +21,10 @@ export function audioPlayerApp(state = init(), action) {
     case SET_PROGRESS:
       return {
         progress: action.val
+      };
+    case SET_DURATION:
+      return {
+        duration: action.val
       };
     default:
       return state
