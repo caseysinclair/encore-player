@@ -1,0 +1,15 @@
+.container {
+  flex: 0 0 auto;
+  flex-direction: row-reverse;
+}
+
+.icon {
+  cursor: pointer;
+  font-size: 2em;
+  color: #585858;
+  transition: all 2s linear;
+  &:hover {
+    color: #797979;
+    font-size: 2.5em;
+  }
+}

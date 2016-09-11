@@ -1,10 +1,13 @@
 import React from 'react';
 import styles from './AudioPlayer.scss';
 import ProgressBar from './ProgressBar';
+import AudioControls from './AudioControls';
 import bindAll from 'lodash/bindall';
 
 import {connect} from 'react-redux';
-import {play, stop, progress} from './actions/audioPlayerActions';
+import {play, stop, progress, duration} from './actions/audioPlayerActions';
+
+const PLAYER = document.querySelector('audio');
 
 class AudioPlayer extends React.Component {
   constructor(props) {
@@ -16,22 +19,35 @@ class AudioPlayer extends React.Component {
     const player = document.querySelector('audio');
 
     player.addEventListener('playing', () => this.handleProgress(player));
-    player.addEventListener('paused', () => this.handlePaused(player));
+    player.addEventListener('paused', () => this.handlePaused());
+    player.addEventListener('loadedmetadata', () => this.handleMetaData(player));
+  }
+
+  handleMetaData(player) {
+    return this.props.duration(player.duration * 1000)
   }
 
   handleProgress(player) {
-    this.props.play();
+    player.timer = {};
 
-    setInterval(() => {
-      this.props.progress(player.currentTime)
-    }, 500)
+    if (player.timer.setProgress) {
+      clearInterval(player.timer.setProgress);
+    }
+
+    player.timer.setProgress = setInterval(() => {
+      if (player.paused) {
+        return clearInterval(player.timer.setProgress);
+      } else {
+        return this.props.progress(player.currentTime);
+      }
+    }, 500);
   }
 
-  handlePaused(player) {
+  handlePaused() {
     this.props.stop()
   }
 
-   playback() {
+  playback() {
     const player = document.querySelector('audio');
 
     if (player.paused) {
@@ -49,7 +65,13 @@ class AudioPlayer extends React.Component {
     )
   }
 
-   renderAudioElement() {
+  renderControls() {
+    return (
+      <AudioControls isPlaying={this.props.playing} onClick={() => this.playback()}/>
+    )
+  }
+
+  renderAudioElement() {
     return (
       <audio src={'https://www.freesound.org/data/previews/353/353025_110287-lq.mp3'}/>
     )
@@ -59,6 +81,7 @@ class AudioPlayer extends React.Component {
     return (
       <div className={styles.container} onClick={() => this.playback()}>
         <div className={`${styles.contents} ${styles.base}`}>
+          {this.renderControls()}
           {this.renderProgressBar()}
           {this.renderAudioElement()}
         </div>
@@ -75,6 +98,7 @@ const mapStateToProps = (state) => {
   return {
     playing: state.playing,
     currentProgress: state.progress,
+    total: state.duration,
   }
 };
 
@@ -82,7 +106,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     play: () => dispatch(play()),
     stop: () => dispatch(stop()),
-    progress: (val) => dispatch(progress(val))
+    progress: (val) => dispatch(progress(val)),
+    duration: (val) => dispatch(duration(val))
   }
 };
 

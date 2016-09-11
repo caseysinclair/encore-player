@@ -8,6 +8,8 @@ const ProgressBar = ({total, progress}) => {
   };
 
   const handleTimeFormat = (value) => {
+    if (!value) return;
+
     var min = Math.floor(value / 59, 10).toPrecision(1);
     var sec = (value % 59).toFixed(0) < 10 ? 0 + (value % 59).toFixed(0) : (value % 59).toFixed(0);
 
@@ -24,7 +26,7 @@ const ProgressBar = ({total, progress}) => {
 
   const renderProgress = () => {
     return (
-      <div className={styles.timer} >
+      <div className={styles.timer}>
         <span>{handleTimeFormat(progress)}</span>
       </div>
     )
