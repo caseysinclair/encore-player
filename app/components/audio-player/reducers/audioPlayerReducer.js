@@ -11,21 +11,21 @@ const init = () => {
 export function audioPlayerApp(state = init(), action) {
   switch (action.type) {
     case PLAY_AUDIO:
-      return {
+      return Object.assign({}, state, {
         playing: true
-      };
+      });
     case STOP_AUDIO:
-      return {
+      return Object.assign({}, state, {
         playing: false
-      };
+      });
     case SET_PROGRESS:
-      return {
+      return Object.assign({}, state, {
         progress: action.val
-      };
+      });
     case SET_DURATION:
-      return {
+      return Object.assign({}, state, {
         duration: action.val
-      };
+      });
     default:
       return state
   }

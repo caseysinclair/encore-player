@@ -19,7 +19,7 @@ const ProgressBar = ({total, progress}) => {
   const renderTotal = () => {
     return (
       <div className={styles.timer}>
-        <span>{total}</span>
+        <span>{handleTimeFormat(total)}</span>
       </div>
     )
   };

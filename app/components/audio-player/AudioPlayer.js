@@ -1,13 +1,11 @@
 import React from 'react';
 import styles from './AudioPlayer.scss';
 import ProgressBar from './ProgressBar';
-import AudioControls from './AudioControls';
+import ConnectedAudioControls from './AudioControls';
 import bindAll from 'lodash/bindall';
 
 import {connect} from 'react-redux';
 import {play, stop, progress, duration} from './actions/audioPlayerActions';
-
-const PLAYER = document.querySelector('audio');
 
 class AudioPlayer extends React.Component {
   constructor(props) {
@@ -24,7 +22,7 @@ class AudioPlayer extends React.Component {
   }
 
   handleMetaData(player) {
-    return this.props.duration(player.duration * 1000)
+    return this.props.duration(player.duration)
   }
 
   handleProgress(player) {
@@ -51,10 +49,12 @@ class AudioPlayer extends React.Component {
     const player = document.querySelector('audio');
 
     if (player.paused) {
+      this.props.play();
       return player.play();
+    } else {
+      this.props.stop();
+      return player.pause();
     }
-
-    return player.pause();
   }
 
   renderProgressBar() {
@@ -67,7 +67,7 @@ class AudioPlayer extends React.Component {
 
   renderControls() {
     return (
-      <AudioControls isPlaying={this.props.playing} onClick={() => this.playback()}/>
+      <ConnectedAudioControls onClick={() => this.playback()}/>
     )
   }
 
