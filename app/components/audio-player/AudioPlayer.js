@@ -5,7 +5,7 @@ import ConnectedAudioControls from './AudioControls';
 import bindAll from 'lodash/bindall';
 
 import {connect} from 'react-redux';
-import {duration} from './actions/audioPlayerActions';
+import {duration, progress} from './actions/audioPlayerActions';
 
 class AudioPlayer extends React.Component {
   constructor(props) {
@@ -14,16 +14,28 @@ class AudioPlayer extends React.Component {
   }
 
   componentDidMount() {
-    this._audio.addEventListener('loadedmetadata', () => this.handleMetaData(this._audio));
+    this._audio.addEventListener('loadedmetadata', () => this.handleMetaData());
+    this._audio.addEventListener('playing', () => this.handleProgress());
   }
 
-  handleMetaData(player) {
-    return this.props.duration(player.duration)
+  handleMetaData() {
+    return this.props.duration(this._audio.duration)
+  }
+
+  handleProgress() {
+    const player = this._audio;
+    const setProgress = player.progressInterval = {};
+
+    return setProgress.progress = setInterval(() => {
+      if (player.paused) return clearInterval(setProgress.progress);
+      return this.props.progress(player.currentTime)
+    }, 500)
   }
 
   renderAudioElement() {
     return (
-      <audio ref={(e) => this._audio = e} src={'https://www.freesound.org/data/previews/353/353025_110287-lq.mp3'}/>
+      <audio ref={(e) => this._audio = e}
+             src={'https://www.freesound.org/data/previews/353/353025_110287-lq.mp3'}/>
     )
   }
 
@@ -31,7 +43,7 @@ class AudioPlayer extends React.Component {
     return (
       <div className={styles.container}>
         <div className={`${styles.inner} ${styles.base}`}>
-          <ConnectedAudioControls audioElement={this._audio} />
+          <ConnectedAudioControls audioElement={this._audio}/>
           <ConnectedProgressBar />
           {this.renderAudioElement()}
         </div>
@@ -54,7 +66,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    duration: (val) => dispatch(duration(val))
+    duration: (val) => dispatch(duration(val)),
+    progress: (val) => dispatch(progress(val))
   }
 };
 

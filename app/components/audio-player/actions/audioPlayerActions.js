@@ -17,7 +17,6 @@ export function stop() {
 }
 
 export function progress(val) {
-  console.log(val);
   return {
     type: SET_PROGRESS,
     val
@@ -41,7 +40,7 @@ export function seeking(val) {
 export function playAudio(ref) {
   return function (dispatch) {
     dispatch(play());
-    return updateProgress(dispatch, ref)
+    return ref.play();
   }
 }
 
@@ -52,7 +51,10 @@ export function stopAudio(ref) {
   }
 }
 
-const updateProgress = (dispatch, player) => {
-  player.play();
-  return setInterval(dispatch(progress(player.currentTime)), 500);
-};
+export function updateProgress(ref, setTime) {
+  return function (dispatch) {
+    dispatch(progress(ref.setTime));
+
+    return ref.currentTime = setTime;
+  }
+}

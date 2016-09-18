@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './ProgressBar.scss';
 
 import {connect} from 'react-redux';
-import {progress} from './actions/audioPlayerActions';
+import {updateProgress, progress} from './actions/audioPlayerActions';
 
 const ProgressBar = ({total, progress, setDuration}) => {
 
