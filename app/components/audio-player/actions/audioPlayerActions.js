@@ -6,7 +6,7 @@ export const SEEKING = 'SEEKING';
 
 export function play() {
   return {
-    type: PLAY_AUDIO
+    type: PLAY_AUDIO,
   }
 }
 
@@ -17,6 +17,7 @@ export function stop() {
 }
 
 export function progress(val) {
+  console.log(val);
   return {
     type: SET_PROGRESS,
     val
@@ -37,18 +38,21 @@ export function seeking(val) {
   }
 }
 
-function handleProgress(player) {
-  player.timer = {};
-
-  if (player.timer.setProgress) {
-    clearInterval(player.timer.setProgress);
+export function playAudio(ref) {
+  return function (dispatch) {
+    dispatch(play());
+    return updateProgress(dispatch, ref)
   }
-
-  player.timer.setProgress = setInterval(() => {
-    if (player.paused) {
-      return clearInterval(player.timer.setProgress);
-    } else {
-      return this.props.progress(player.currentTime);
-    }
-  }, 500);
 }
+
+export function stopAudio(ref) {
+  return function (dispatch) {
+    dispatch(stop());
+    return ref.pause();
+  }
+}
+
+const updateProgress = (dispatch, player) => {
+  player.play();
+  return setInterval(dispatch(progress(player.currentTime)), 500);
+};

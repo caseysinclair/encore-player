@@ -6,7 +6,7 @@
   "scripts": {
     "test": "npm test",
     "lint": "./node_modules/.bin/eslint ./app",
-    "start": "webpack-dev-server --hot -inline"
+    "start": "webpack-dev-server --hot --inline"
   },
   "author": "Casey sinclair",
   "license": "ISC",

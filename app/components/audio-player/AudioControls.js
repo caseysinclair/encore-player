@@ -2,19 +2,19 @@ import React from 'react';
 import styles from './AudioControls.scss';
 
 import {connect} from 'react-redux';
-import {play, stop} from './actions/audioPlayerActions';
+import {playAudio, stopAudio} from './actions/audioPlayerActions';
 
-const AudioControls = ({playing, play, stop}) => {
+const AudioControls = ({playing, play, stop, audioElement}) => {
 
   const renderButton = () => {
     const addIconClass = `${styles.icon} material-icons`;
 
     if (playing) return (
-      <i onClick={() => stop()} className={addIconClass}>pause_circle_outlined</i>
+      <i onClick={() => stop(audioElement)} className={addIconClass}>pause_circle_outlined</i>
     );
 
     return (
-      <i onClick={() => play()} className={addIconClass}>play_circle_outlined</i>
+      <i onClick={() => play(audioElement)} className={addIconClass}>play_circle_outlined</i>
     )
   };
 
@@ -29,6 +29,7 @@ AudioControls.PropTypes = {
   playing: React.PropTypes.bool.isRequired,
   play: React.PropTypes.func.isRequired,
   stop: React.PropTypes.func.isRequired,
+  audioElement: React.PropTypes.node,
 };
 
 const mapStateToProps = (state) => {
@@ -39,8 +40,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    play: () => dispatch(play()),
-    stop: () => dispatch(stop()),
+    play: (el) => dispatch(playAudio(el)),
+    stop: (el) => dispatch(stopAudio(el)),
   }
 };
 

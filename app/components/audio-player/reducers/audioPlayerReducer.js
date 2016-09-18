@@ -19,8 +19,8 @@ export function audioPlayerApp(state = init(), action) {
   switch (action.type) {
     case PLAY_AUDIO:
       return Object.assign({}, state, {
-        playing: true
-      });
+          playing: true,
+        });
     case STOP_AUDIO:
       return Object.assign({}, state, {
         playing: false

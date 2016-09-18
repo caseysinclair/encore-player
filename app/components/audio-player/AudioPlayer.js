@@ -14,9 +14,7 @@ class AudioPlayer extends React.Component {
   }
 
   componentDidMount() {
-    const player = document.querySelector('audio');
-    player.addEventListener('playing', () => this.handleProgress(player));
-    player.addEventListener('loadedmetadata', () => this.handleMetaData(player));
+    this._audio.addEventListener('loadedmetadata', () => this.handleMetaData(this._audio));
   }
 
   handleMetaData(player) {
@@ -25,7 +23,7 @@ class AudioPlayer extends React.Component {
 
   renderAudioElement() {
     return (
-      <audio src={'https://www.freesound.org/data/previews/353/353025_110287-lq.mp3'}/>
+      <audio ref={(e) => this._audio = e} src={'https://www.freesound.org/data/previews/353/353025_110287-lq.mp3'}/>
     )
   }
 
@@ -33,7 +31,7 @@ class AudioPlayer extends React.Component {
     return (
       <div className={styles.container}>
         <div className={`${styles.inner} ${styles.base}`}>
-          <ConnectedAudioControls />
+          <ConnectedAudioControls audioElement={this._audio} />
           <ConnectedProgressBar />
           {this.renderAudioElement()}
         </div>
