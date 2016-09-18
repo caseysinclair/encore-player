@@ -1,10 +1,14 @@
 import React from 'react';
 import styles from './ProgressBar.scss';
 
-const ProgressBar = ({total, progress}) => {
+import {connect} from 'react-redux';
+import {progress} from './actions/audioPlayerActions';
 
-  const seeking = (e, total) => {
-    return ((e.pageX - e.currentTarget.getBoundingClientRect().left) / e.currentTarget.offsetWidth * total);
+const ProgressBar = ({total, progress, setDuration}) => {
+
+  const seeking = (e) => {
+    const setNewTime = ((e.pageX - e.currentTarget.getBoundingClientRect().left) / e.currentTarget.offsetWidth * total);
+    setDuration(setNewTime);
   };
 
   const handleTimeFormat = (value) => {
@@ -34,8 +38,8 @@ const ProgressBar = ({total, progress}) => {
 
   const renderProgressBar = () => {
     return (
-      <div className={styles.progress} onClick={seeking}>
-        <span className={styles.track} style={{width: progress + '%'}}/>
+      <div className={styles.progress} onClick={(e) => seeking(e)}>
+        <span className={styles.track} style={{width: (progress / total * 100) + '%'}}/>
       </div>
     )
   };
@@ -50,9 +54,24 @@ const ProgressBar = ({total, progress}) => {
 };
 
 ProgressBar.propsTypes = {
-  total: React.PropTypes.string.isRequired,
-  progress: React.PropTypes.string.isRequired
+  total: React.PropTypes.string,
+  progress: React.PropTypes.string,
+  setDuration: React.PropTypes.func,
 };
 
-export default ProgressBar;
+const mapStateToProps = (state) => {
+  return {
+    total: state.duration,
+    progress: state.progress,
+  }
+};
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setDuration: (time) => dispatch(progress(time)),
+  }
+};
+
+const ConnectedProgressBar = connect(mapStateToProps, mapDispatchToProps)(ProgressBar);
+
+export default ConnectedProgressBar

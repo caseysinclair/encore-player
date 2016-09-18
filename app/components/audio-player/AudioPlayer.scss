@@ -4,7 +4,7 @@
   width: 100%;
 }
 
-.contents {
+.inner {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -12,6 +12,6 @@
 }
 
 .base {
-  background-color: #eee;
-  border-top: solid 2px #ccc;
+  background-color: #eeeeee;
+  border-top: solid 1px #cccccc;
 }

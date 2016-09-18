@@ -6,17 +6,17 @@
   "scripts": {
     "test": "npm test",
     "lint": "./node_modules/.bin/eslint ./app",
-    "start": "webpack-dev-server --open"
+    "start": "webpack-dev-server --hot -inline"
   },
   "author": "Casey sinclair",
   "license": "ISC",
   "devDependencies": {
     "eslint-plugin-react": "^5.2.2",
-    "node-sass": "^3.4.2",
+    "node-sass": "^3.10.0",
     "postcss-loader": "^0.9.1",
     "redux-devtools": "^3.0.1",
-    "sass-loader": "^3.1.2",
-    "webpack": "^1.13.1",
+    "sass-loader": "^3.2.3",
+    "webpack": "^1.13.2",
     "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {

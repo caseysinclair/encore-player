@@ -8,8 +8,8 @@
   font-size: 2em;
   color: #585858;
   transition: all 2s linear;
-  &:hover {
-    color: #797979;
+  :hover {
+    opacity: 0.5;
     font-size: 2.5em;
   }
 }
