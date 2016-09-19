@@ -4,6 +4,8 @@ import {
   SET_PROGRESS,
   SET_DURATION,
   SEEKING,
+  AUDIO_ELEMENT,
+  AUDIO_TIME,
 } from '../actions/audioPlayerActions';
 
 const init = () => {
@@ -12,6 +14,7 @@ const init = () => {
      progress: 0,
      duration: 0,
      seeking: null,
+     audioEl: null,
    }
 };
 
@@ -36,6 +39,10 @@ export function audioPlayerApp(state = init(), action) {
     case SEEKING:
       return Object.assign({}, state, {
         seeking: action.val
+      });
+    case AUDIO_ELEMENT:
+      return Object.assign({}, state, {
+        audioEl: action.val
       });
     default:
       return state

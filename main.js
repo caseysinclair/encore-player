@@ -10,7 +10,7 @@ import {Provider} from 'react-redux'
 import { audioPlayerApp } from './app/components/audio-player/reducers/audioPlayerReducer';
 
 let logger = createLogger();
-let store = createStore(audioPlayerApp, applyMiddleware(thunk, promise, logger));
+export const store = createStore(audioPlayerApp, applyMiddleware(thunk, promise, logger));
 
 const container = document.getElementById('root');
 ReactDOM.render(

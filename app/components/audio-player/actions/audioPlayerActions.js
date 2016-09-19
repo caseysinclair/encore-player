@@ -3,6 +3,10 @@ export const STOP_AUDIO = 'STOP_AUDIO';
 export const SET_PROGRESS = 'SET_PROGRESS';
 export const SET_DURATION = 'SET_DURATION';
 export const SEEKING = 'SEEKING';
+export const AUDIO_ELEMENT = 'AUDIO_ELEMENT';
+export const AUDIO_TIME = 'AUDIO_TIME';
+
+import {playMedia, stopMedia} from '../audioApiService';
 
 export function play() {
   return {
@@ -37,24 +41,23 @@ export function seeking(val) {
   }
 }
 
-export function playAudio(ref) {
-  return function (dispatch) {
-    dispatch(play());
-    return ref.play();
+export function setAudioElement(val) {
+  return {
+    type: AUDIO_ELEMENT,
+    val
   }
 }
 
-export function stopAudio(ref) {
-  return function (dispatch) {
-    dispatch(stop());
-    return ref.pause();
+
+export function setTimer(val) {
+  return {
+    type: AUDIO_TIME,
+    val
   }
 }
 
-export function updateProgress(ref, setTime) {
+export function updateProgress(setTime) {
   return function (dispatch) {
-    dispatch(progress(ref.setTime));
-
-    return ref.currentTime = setTime;
+    dispatch(setTimer(setTime));
   }
 }
