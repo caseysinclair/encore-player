@@ -20,7 +20,8 @@
 
 .track {
   display: flex;
-  outline: solid 1px red;
-  border: solid 1px #eeeeee;
-  transition: width 1s linear;
+  outline: solid 1px #585858;
+  border: solid 1px #585858;
+  transition: width 0.1s linear;
+  width: 0;
 }

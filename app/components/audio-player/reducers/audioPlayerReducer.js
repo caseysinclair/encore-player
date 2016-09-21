@@ -6,6 +6,8 @@ import {
   SEEKING,
   AUDIO_ELEMENT,
   AUDIO_TIME,
+  SET_END,
+  IS_PLAYABLE,
 } from '../actions/audioPlayerActions';
 
 const init = () => {
@@ -14,12 +16,17 @@ const init = () => {
      progress: 0,
      duration: 0,
      seeking: null,
-     audioEl: null,
+     isPlayable: false,
    }
 };
 
 export function audioPlayerApp(state = init(), action) {
   switch (action.type) {
+    case IS_PLAYABLE: {
+      return Object.assign({}, state, {
+        isPlayable: true,
+      })
+    }
     case PLAY_AUDIO:
       return Object.assign({}, state, {
           playing: true,
@@ -40,9 +47,10 @@ export function audioPlayerApp(state = init(), action) {
       return Object.assign({}, state, {
         seeking: action.val
       });
-    case AUDIO_ELEMENT:
+    case SET_END:
       return Object.assign({}, state, {
-        audioEl: action.val
+        progress: 0,
+        playing: false,
       });
     default:
       return state

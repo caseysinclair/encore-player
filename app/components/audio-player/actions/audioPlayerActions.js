@@ -5,8 +5,8 @@ export const SET_DURATION = 'SET_DURATION';
 export const SEEKING = 'SEEKING';
 export const AUDIO_ELEMENT = 'AUDIO_ELEMENT';
 export const AUDIO_TIME = 'AUDIO_TIME';
-
-import {playMedia, stopMedia} from '../audioApiService';
+export const SET_END = 'SET_END';
+export const IS_PLAYABLE = 'IS_PLAYABLE';
 
 export function play() {
   return {
@@ -40,6 +40,20 @@ export function seeking(val) {
     val
   }
 }
+
+export function end() {
+  return {
+    type: SET_END
+  }
+}
+
+export function playable() {
+  return {
+    type: IS_PLAYABLE
+  }
+}
+
+
 
 export function setAudioElement(val) {
   return {

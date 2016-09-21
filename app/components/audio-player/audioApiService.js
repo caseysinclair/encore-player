@@ -1,5 +1,5 @@
 import {Howl} from 'howler';
-import {duration, progress, play, stop} from './actions/audioPlayerActions';
+import {duration, progress, play, stop, end, playable} from './actions/audioPlayerActions';
 import {store} from '../../../main.js';
 
 export let track = null;
@@ -11,16 +11,21 @@ export const load = (media) => track = new Howl({
   html5: true,
   ctx: true,
   onload: () => {
+    store.dispatch(playable());
     return store.dispatch(duration(track.duration()))
   },
   onplay: () => {
     store.dispatch(play());
     return progressInterval.set = setInterval(() => {
       store.dispatch(progress(track.seek()))
-    }, 500);
+    }, 120);
   },
   onpause: () => {
     store.dispatch(stop());
+    return clearInterval(progressInterval.set);
+  },
+  onend: () => {
+    store.dispatch(end());
     return clearInterval(progressInterval.set)
   }
 });
@@ -31,4 +36,10 @@ export function playMedia() {
 
 export function stopMedia() {
   return track.pause();
+}
+
+export function seekMedia(v) {
+  stopMedia();
+  track.seek(v);
+  return playMedia();
 }

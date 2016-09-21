@@ -2,13 +2,13 @@ import React from 'react';
 import styles from './ProgressBar.scss';
 
 import {connect} from 'react-redux';
-import {updateProgress, progress} from './actions/audioPlayerActions';
+import {seekMedia} from './audioApiService';
 
-const ProgressBar = ({total, progress, setDuration}) => {
+const ProgressBar = ({total, progress}) => {
 
   const seeking = (e) => {
     const setNewTime = ((e.pageX - e.currentTarget.getBoundingClientRect().left) / e.currentTarget.offsetWidth * total);
-    setDuration(setNewTime);
+    seekMedia(setNewTime);
   };
 
   const handleTimeFormat = (value) => {
@@ -36,10 +36,18 @@ const ProgressBar = ({total, progress, setDuration}) => {
     )
   };
 
+  const renderTrackBar = () => {
+    if (!progress) return;
+
+    return (
+      <span className={styles.track} style={{width: (progress / total * 100) + '%'}}/>
+    )
+  };
+
   const renderProgressBar = () => {
     return (
       <div className={styles.progress} onClick={(e) => seeking(e)}>
-        <span className={styles.track} style={{width: (progress / total * 100) + '%'}}/>
+        {renderTrackBar()}
       </div>
     )
   };
@@ -66,12 +74,7 @@ const mapStateToProps = (state) => {
   }
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setDuration: (time) => dispatch(progress(time)),
-  }
-};
 
-const ConnectedProgressBar = connect(mapStateToProps, mapDispatchToProps)(ProgressBar);
+const ConnectedProgressBar = connect(mapStateToProps)(ProgressBar);
 
 export default ConnectedProgressBar
