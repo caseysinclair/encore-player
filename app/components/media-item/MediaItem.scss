@@ -1,0 +1,49 @@
+.showcase {
+  display: inline-block;
+  width: 18%;
+  margin: 0 1%;
+  transition: all 0.3s linear;
+}
+
+.block {
+  flex: 1 0 auto;
+  width: 100%;
+}
+
+.item {
+  width: inherit;
+}
+
+.covercontainer {
+  position: relative;
+}
+
+@media screen and (min-width: 380px) {
+  .showcase {
+    width: 98%;
+  }
+}
+
+@media screen and (min-width: 420px) {
+  .showcase {
+    width: 48%;
+  }
+}
+
+@media screen and (min-width: 620px) {
+  .showcase {
+    width: 31%;
+  }
+}
+
+@media screen and (min-width: 820px) {
+  .showcase {
+    width: 23%;
+  }
+}
+
+@media screen and (min-width: 1020px) {
+  .showcase {
+    width: 18%;
+  }
+}
