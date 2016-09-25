@@ -1,5 +1,6 @@
 import {Howl} from 'howler';
 import {duration, progress, play, stop, end, playable} from './actions/audioPlayerActions';
+import {currentlyPlaying} from '../media-item/playlistActions';
 import {store} from '../../../main.js';
 
 export let track = null;
@@ -8,6 +9,7 @@ let progressInterval = {};
 export const load = (media) => track = new Howl({
   src: [media],
   usingWebAudio: true,
+  autoplay: true,
   html5: true,
   ctx: true,
   onload: () => {
@@ -42,4 +44,16 @@ export function seekMedia(v) {
   stopMedia();
   track.seek(v);
   return playMedia();
+}
+
+export function switchMedia(song, media, current) {
+  const payload = {media, current};
+  const isLoaded = track.state();
+
+  if (isLoaded !== 'unloaded') {
+    track.unload();
+  }
+
+  load(song);
+  return store.dispatch(currentlyPlaying(payload))
 }

@@ -7,6 +7,7 @@ export const AUDIO_ELEMENT = 'AUDIO_ELEMENT';
 export const AUDIO_TIME = 'AUDIO_TIME';
 export const SET_END = 'SET_END';
 export const IS_PLAYABLE = 'IS_PLAYABLE';
+export const SOURCE_AUDIO = 'SOURCE_AUDIO';
 
 export function play() {
   return {
@@ -50,6 +51,13 @@ export function end() {
 export function playable() {
   return {
     type: IS_PLAYABLE
+  }
+}
+
+export function setSourceAudio(val) {
+  return {
+    type: SOURCE_AUDIO,
+    val,
   }
 }
 

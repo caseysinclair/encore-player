@@ -68,6 +68,8 @@ ProgressBar.propsTypes = {
 };
 
 const mapStateToProps = (state) => {
+  state = state.audioPlayer;
+
   return {
     total: state.duration,
     progress: state.progress,

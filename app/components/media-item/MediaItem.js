@@ -1,18 +1,17 @@
 import React from 'react';
 import styles from './MediaItem.scss';
 import Playlist from './Playlist';
+import uuid from 'uuid';
 
-// import {connect} from 'react-redux';
-// import {playMedia, stopMedia} from './audioApiService';
-
-
-const MediaItem = ({cover, title}) => {
+const MediaItem = ({cover, title, tracks}) => {
   const renderCover = () => {
+    const mediaId = uuid.v4();
+
     return (
-      <div className={styles.block}>
+      <div className={styles.block} data-media-id={mediaId}>
         <img src={cover} className={styles.item}/>
         <h3>{title}</h3>
-        <Playlist tracks={mockTracks}/>
+        <Playlist tracks={tracks} mediaOwner={mediaId}/>
       </div>
     )
   };
@@ -27,21 +26,8 @@ const MediaItem = ({cover, title}) => {
 MediaItem.PropTypes = {
   cover: React.PropTypes.string.isRequired,
   title: React.PropTypes.string.isRequired,
+  mediaId: React.PropTypes.string.isRequired,
 };
 
 export default MediaItem;
 
-const mockTracks = [
-  {
-    title: 'Song one',
-    url: '//link'
-  },
-  {
-    title: 'Song two',
-    url: '//link'
-  },
-  {
-    title: 'Song three',
-    url: '//link'
-  }
-];

@@ -7,7 +7,7 @@ import {load} from './audioApiService';
 export default class AudioPlayer extends React.Component {
 
   componentDidMount() {
-    load('https://www.freesound.org/data/previews/353/353025_110287-lq.mp3');
+    load();
   }
 
   render() {

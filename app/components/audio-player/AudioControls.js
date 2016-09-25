@@ -37,6 +37,8 @@ AudioControls.PropTypes = {
 };
 
 const mapStateToProps = (state) => {
+  state = state.audioPlayer;
+
   return {
     playing: state.playing,
     isPlayable: state.isPlayable,
