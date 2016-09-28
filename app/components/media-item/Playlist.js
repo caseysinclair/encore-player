@@ -3,16 +3,19 @@ import styles from './Playlist.scss';
 import {switchMedia} from '../audio-player/audioApiService';
 import {connect} from 'react-redux';
 
-const Playlist = ({tracks, mediaOwner, currentTrack, isMediaOwner}) => {
+const Playlist = ({tracks, mediaOwner, currentTrack, isMediaOwner, mediaCover}) => {
 
   const handleOnClick = (e) => {
     const dataset = e.target.dataset;
-    switchMedia(dataset.trackUrl, mediaOwner, dataset.trackNumber);
-  };
+    const payload = {
+      trackUrl: dataset.trackUrl,
+      trackTitle: dataset.trackTitle,
+      track: dataset.trackNumber,
+      mediaOwner: mediaOwner,
+      cover: mediaCover,
+    };
 
-  const getCurrentlyPlaying = (e) => {
-    const dataset = e.target.dataset;
-    return dataset.trackNumber === currentTrack;
+    switchMedia(payload);
   };
 
   const renderSingleTrack = () => {
@@ -24,6 +27,7 @@ const Playlist = ({tracks, mediaOwner, currentTrack, isMediaOwner}) => {
           key={index}
           data-track-number={index + 1}
           data-track-url={track.url}
+          data-track-title={track.title}
           className={`${styles.single} ${isCurrentlyPlaying ? styles.active : null}`}
           onClick={(e) => handleOnClick(e)}
         >

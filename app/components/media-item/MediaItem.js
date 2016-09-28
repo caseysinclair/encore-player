@@ -10,8 +10,8 @@ const MediaItem = ({cover, title, tracks}) => {
     return (
       <div className={styles.block} data-media-id={mediaId}>
         <img src={cover} className={styles.item}/>
-        <h3>{title}</h3>
-        <Playlist tracks={tracks} mediaOwner={mediaId}/>
+        <h3 className={styles.title}>{title}</h3>
+        <Playlist tracks={tracks} mediaOwner={mediaId} mediaCover={cover}/>
       </div>
     )
   };

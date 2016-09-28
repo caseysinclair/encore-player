@@ -33,8 +33,8 @@ const mediaPayload = [
     tracks: mockTracks
   },
   {
-    title: 'A Piece of Strange',
-    cover: '//s3.amazonaws.com/hiphopdx-production/2005/11/cunnylinguists-piece-of-strange.jpg',
+    title: 'Phrazes For The Young',
+    cover: '//9803records.com/wp2/wp-content/uploads/2013/11/Julian-Casablancas-Phrazes-For-The-Young.jpg',
     tracks: mockTracks
   },
 ];

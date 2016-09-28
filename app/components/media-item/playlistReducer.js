@@ -28,8 +28,11 @@ export default function playlist(state = init(), action) {
       });
     case CURRENTLY_PLAYING:
       return Object.assign({}, state, {
-        mediaItem: action.payload.media,
-        track: action.payload.current,
+        mediaItem: action.payload.mediaOwner,
+        track: action.payload.track,
+        trackUrl: action.payload.trackUrl,
+        trackTitle: action.payload.trackTitle,
+        mediaCover: action.payload.cover,
       });
     default:
       return state

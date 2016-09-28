@@ -46,14 +46,13 @@ export function seekMedia(v) {
   return playMedia();
 }
 
-export function switchMedia(song, media, current) {
-  const payload = {media, current};
+export function switchMedia(data) {
   const isLoaded = track.state();
 
   if (isLoaded !== 'unloaded') {
     track.unload();
   }
 
-  load(song);
-  return store.dispatch(currentlyPlaying(payload))
+  load(data.trackUrl);
+  return store.dispatch(currentlyPlaying(data))
 }

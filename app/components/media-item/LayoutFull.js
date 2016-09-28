@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './LayoutFull.scss';
 import MediaItem from './MediaItem';
 import {connect} from 'react-redux';
+import uuid from 'uuid';
 import {
   addMedia,
 } from './playlistActions';
