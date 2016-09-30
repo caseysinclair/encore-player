@@ -1,12 +1,9 @@
 .container {
-  height: 80px;
-  position: absolute;
-  right: 120px;
-  bottom: 73px;
+  flex: 0 0 50px;
 }
 
 .cover {
-  width: 80px;
+  width: 32px;
 }
 
 .title {
@@ -18,5 +15,4 @@
   color: white;
   border-radius: 3px;
   background-color: black;
-
 }

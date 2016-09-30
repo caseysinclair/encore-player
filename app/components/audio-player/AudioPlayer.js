@@ -14,7 +14,6 @@ export default class AudioPlayer extends React.Component {
   render() {
     return (
       <div className={styles.container}>
-        <PlaybackInfo />
         <div className={`${styles.inner} ${styles.base}`}>
           <ConnectedAudioControls/>
           <ConnectedProgressBar />
@@ -23,3 +22,12 @@ export default class AudioPlayer extends React.Component {
     )
   }
 }
+
+
+const mapStateToProps = (state) => {
+  state = state.audioPlayer;
+
+  return {
+    isPlayable: state.isPlayable,
+  }
+};

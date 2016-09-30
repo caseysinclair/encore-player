@@ -6,7 +6,6 @@ const PlaybackInfo = ({cover, title}) => {
   return (
     <div className={styles.container}>
       <img src={cover} className={styles.cover}/>
-      <span className={styles.title}>{title}</span>
     </div>
   )
 };

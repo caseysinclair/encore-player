@@ -9,9 +9,7 @@ const AudioControls = ({playing, isPlayable}) => {
   const renderButton = () => {
     const addIconClass = `${styles.icon} material-icons`;
 
-    if (!isPlayable) return (
-      <i className={`${addIconClass} ${styles.disabled}`}>play_circle_outlined</i>
-    );
+    if (!isPlayable) return null;
 
     if (playing) return (
       <i onClick={() => stopMedia()} className={addIconClass}>pause_circle_outlined</i>

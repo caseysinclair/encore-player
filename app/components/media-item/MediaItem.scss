@@ -1,55 +1,31 @@
-.showcase {
-  display: inline-block;
-  width: 18%;
-  margin: 0 1%;
-  transition: all 0.3s linear;
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-basis: 32%;
+  border: solid 1px #eeeeee;
+  background-color: white;
+  padding: 3px;
+  margin: 1%;
+
 }
 
 .block {
-  flex: 1 0 auto;
-  width: 100%;
+  flex: 0 0 50%;
 }
 
 .item {
-  width: inherit;
+  width: 100%;
+}
+
+.iteminfo {
+  padding-left: 5px;
 }
 
 .title {
   font-weight: 200;
-  text-align: center;
   font-size: 1.1em;
 }
 
 .covercontainer {
   position: relative;
-}
-
-@media screen and (min-width: 380px) {
-  .showcase {
-    width: 98%;
-  }
-}
-
-@media screen and (min-width: 420px) {
-  .showcase {
-    width: 48%;
-  }
-}
-
-@media screen and (min-width: 620px) {
-  .showcase {
-    width: 31%;
-  }
-}
-
-@media screen and (min-width: 820px) {
-  .showcase {
-    width: 23%;
-  }
-}
-
-@media screen and (min-width: 1020px) {
-  .showcase {
-    width: 18%;
-  }
 }

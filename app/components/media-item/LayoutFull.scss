@@ -1,12 +1,11 @@
 .container {
-  scroll-snap-type: mandatory;
-  scroll-snap-points-y: repeat(100vh);
-  max-width: 1200px;
+  width: 1200px;
   margin: 12.5px auto 0;
   padding: 7.5px;
 }
 
 .screen {
-  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
 }
-

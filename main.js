@@ -37,6 +37,11 @@ const mediaPayload = [
     cover: '//9803records.com/wp2/wp-content/uploads/2013/11/Julian-Casablancas-Phrazes-For-The-Young.jpg',
     tracks: mockTracks
   },
+  {
+    title: 'Phrazes For The Young',
+    cover: '//9803records.com/wp2/wp-content/uploads/2013/11/Julian-Casablancas-Phrazes-For-The-Young.jpg',
+    tracks: mockTracks
+  },
 ];
 
 let logger = createLogger();
@@ -54,5 +59,3 @@ ReactDOM.render(
   <Provider store={store}>
     <ConnectedLayoutFull items={mediaPayload} />
   </Provider>, main);
-
-
