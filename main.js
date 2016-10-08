@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import AudioPlayer from './app/components/audio-player/AudioPlayer';
 import ConnectedLayoutFull from './app/components/media-item/LayoutFull';
+import ConnectedNowPlaying from './app/components/now-playing/NowPlaying';
 
 import {applyMiddleware, createStore} from 'redux';
 import thunk from 'redux-thunk';
@@ -28,18 +29,8 @@ const mockTracks = [
 
 const mediaPayload = [
   {
-    title: 'A Piece of Strange',
-    cover: '//s3.amazonaws.com/hiphopdx-production/2005/11/cunnylinguists-piece-of-strange.jpg',
-    tracks: mockTracks
-  },
-  {
-    title: 'Phrazes For The Young',
-    cover: '//9803records.com/wp2/wp-content/uploads/2013/11/Julian-Casablancas-Phrazes-For-The-Young.jpg',
-    tracks: mockTracks
-  },
-  {
-    title: 'Phrazes For The Young',
-    cover: '//9803records.com/wp2/wp-content/uploads/2013/11/Julian-Casablancas-Phrazes-For-The-Young.jpg',
+    title: 'Drive',
+    cover: '//i1.sndcdn.com/avatars-000212033323-kbfcl6-t500x500.jpg',
     tracks: mockTracks
   },
 ];
@@ -49,6 +40,7 @@ export const store = createStore(reducers, applyMiddleware(thunk, promise, logge
 
 const container = document.getElementById('root');
 const main = document.getElementById('main');
+const playingnow = document.getElementById('playingnow');
 
 ReactDOM.render(
   <Provider store={store}>
@@ -59,3 +51,8 @@ ReactDOM.render(
   <Provider store={store}>
     <ConnectedLayoutFull items={mediaPayload} />
   </Provider>, main);
+
+ReactDOM.render(
+  <Provider store={store}>
+    <ConnectedNowPlaying />
+  </Provider>, playingnow);

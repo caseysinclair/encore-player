@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './ProgressBar.scss';
+import Rcslider from 'rc-slider';
 
 import {connect} from 'react-redux';
 import {seekMedia} from './audioApiService';
@@ -40,7 +41,10 @@ const ProgressBar = ({total, progress}) => {
     if (!progress) return;
 
     return (
-      <span className={styles.track} style={{width: (progress / total * 100) + '%'}}/>
+      <Rcslider
+        max={total}
+        value={progress}
+      />
     )
   };
 
@@ -62,8 +66,8 @@ const ProgressBar = ({total, progress}) => {
 };
 
 ProgressBar.propsTypes = {
-  total: React.PropTypes.string,
   progress: React.PropTypes.string,
+  total: React.PropTypes.string,
   setDuration: React.PropTypes.func,
 };
 

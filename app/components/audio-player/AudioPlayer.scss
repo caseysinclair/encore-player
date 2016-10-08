@@ -1,7 +1,9 @@
 .container {
-  bottom: 0;
+  bottom: 20px;
   position: fixed;
-  width: 100%;
+  left: 20%;
+  right: 20%;
+  box-shadow: 0px 2px 2px -3px;
 }
 
 .inner {
@@ -13,5 +15,5 @@
 
 .base {
   background-color: #eeeeee;
-  border-top: solid 1px #cccccc;
+  border: solid 1px #cccccc;
 }
