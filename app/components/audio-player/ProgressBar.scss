@@ -24,9 +24,12 @@
   border: solid 1px #585858;
   transition: width 0.1s linear;
   width: 100%;
-
 }
 
-input[type="range" i]::-webkit-slider-runnable-track {
+.slider {
+  margin: 0 0 !important;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
   width: 100%;
 }

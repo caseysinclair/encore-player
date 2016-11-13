@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import AudioPlayer from './app/components/audio-player/AudioPlayer';
 import ConnectedLayoutFull from './app/components/media-item/LayoutFull';
 import ConnectedNowPlaying from './app/components/now-playing/NowPlaying';
@@ -10,6 +12,12 @@ import promise from 'redux-promise';
 import createLogger from 'redux-logger';
 import {Provider} from 'react-redux'
 import reducers from './app/appReducers';
+
+const muiTheme = getMuiTheme({
+  slider: {
+    marginTop: 0
+  }
+})
 
 const mockTracks = [
   {
@@ -44,7 +52,10 @@ const playingnow = document.getElementById('playingnow');
 
 ReactDOM.render(
   <Provider store={store}>
-    <AudioPlayer />
+    <MuiThemeProvider muiTheme={muiTheme}>
+      <AudioPlayer />
+    </MuiThemeProvider>
+
   </Provider>, container);
 
 ReactDOM.render(

@@ -12,6 +12,7 @@
   "license": "ISC",
   "devDependencies": {
     "eslint-plugin-react": "^5.2.2",
+    "material-ui": "^0.16.0",
     "node-sass": "^3.10.0",
     "postcss-loader": "^0.9.1",
     "redux-devtools": "^3.0.1",
