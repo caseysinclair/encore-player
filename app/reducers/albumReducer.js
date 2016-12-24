@@ -1,7 +1,7 @@
 import {
   ADD_MEDIA_ITEM,
   CURRENTLY_PLAYING,
-} from './playlistActions';
+} from '../actions/playlistActions';
 
 import uuid from 'uuid';
 

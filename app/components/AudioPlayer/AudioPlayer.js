@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './AudioPlayer.scss';
-import ConnectedProgressBar from './ProgressBar';
-import ConnectedAudioControls from './AudioControls';
+import ConnectedProgressBar from './components/ProgressBar';
+import ConnectedAudioControls from './components/AudioControls';
 import {load} from './audioApiService';
 import {connect} from 'react-redux';
 

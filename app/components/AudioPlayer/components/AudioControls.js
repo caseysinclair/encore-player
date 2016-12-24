@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import {
   playMedia,
   stopMedia
-} from './audioApiService';
+} from '../audioApiService';
 
 
 const AudioControls = ({playing, isPlayable}) => {
