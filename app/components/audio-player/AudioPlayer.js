@@ -3,20 +3,34 @@ import styles from './AudioPlayer.scss';
 import ConnectedProgressBar from './ProgressBar';
 import ConnectedAudioControls from './AudioControls';
 import {load} from './audioApiService';
+import {connect} from 'react-redux';
 
-export default class AudioPlayer extends React.Component {
+
+export class AudioPlayer extends React.Component {
 
   componentDidMount() {
     load();
   }
 
-  render() {
+  renderAudioPlayerApp() {
     return (
-      <div className={styles.container}>
-        <div className={`${styles.inner} ${styles.base}`}>
+      <div className={`${styles.inner} ${styles.base}`}>
+        <div className={styles.content}>
           <ConnectedAudioControls/>
           <ConnectedProgressBar />
         </div>
+      </div>
+    )
+  }
+
+  render() {
+    if (!this.props.isPlayable) {
+      return null
+    }
+
+    return (
+      <div className={styles.container}>
+        {this.renderAudioPlayerApp()}
       </div>
     )
   }
@@ -30,3 +44,9 @@ const mapStateToProps = (state) => {
     isPlayable: state.isPlayable,
   }
 };
+
+
+
+const ConnectedAudioPlayer = connect(mapStateToProps)(AudioPlayer);
+
+export default ConnectedAudioPlayer

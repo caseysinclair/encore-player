@@ -1,14 +1,12 @@
 .container {
   flex: 0 0 auto;
-  flex-direction: row-reverse;
 }
 
 .icon {
-  cursor: pointer;
   font-size: 2em;
   color: #585858;
-  transition: all 0.2s linear;
   width: 30px;
+  text-decoration: none;
 
   &:hover {
     opacity: 0.5;
@@ -17,6 +15,6 @@
 }
 
 .disabled {
-  color: white;
+  color: #b6b6b6;
   cursor: default;
 }

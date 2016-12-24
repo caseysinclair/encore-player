@@ -51,13 +51,11 @@ const mapStateToProps = (state) => {
   }
 };
 
-
 const mapDispatchToProps = (dispatch) => {
   return {
     addItems: (payload) => dispatch(addMedia(payload))
   }
 };
-
 
 const ConnectedLayoutFull = connect(mapStateToProps, mapDispatchToProps)(LayoutFull);
 

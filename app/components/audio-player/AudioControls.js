@@ -1,22 +1,27 @@
 import React from 'react';
 import styles from './AudioControls.scss';
-
 import {connect} from 'react-redux';
-import {playMedia, stopMedia} from './audioApiService';
+
+import {
+  playMedia,
+  stopMedia
+} from './audioApiService';
 
 
 const AudioControls = ({playing, isPlayable}) => {
   const renderButton = () => {
     const addIconClass = `${styles.icon} material-icons`;
 
-    if (!isPlayable) return null;
+    if (!isPlayable) return (
+      <span className={`${styles.disabled} ${addIconClass}`}>play_circle_outlined</span>
+    );
 
     if (playing) return (
-      <i onClick={() => stopMedia()} className={addIconClass}>pause_circle_outlined</i>
+      <a href="#" onClick={() => stopMedia()} className={addIconClass}>pause_circle_outlined</a>
     );
 
     return (
-      <i onClick={() => playMedia()} className={addIconClass}>play_circle_outlined</i>
+      <a href="#" onClick={() => playMedia()} className={addIconClass}>play_circle_outlined</a>
     )
   };
 

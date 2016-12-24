@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './ProgressBar.scss';
-import Slider from 'material-ui/Slider';
 import {connect} from 'react-redux';
 import {seekMedia} from './audioApiService';
 
@@ -45,12 +44,7 @@ const ProgressBar = ({total, progress}) => {
     if (!progress) return;
 
     return (
-      <Slider
-        className={styles.slider}
-        max={total}
-        value={progress}
-        onDragStop={(e) => seeking(e)}
-      />
+      <span className={styles.track} style={{width: (progress / total * 100) + '%'}}/>
     )
   };
 
