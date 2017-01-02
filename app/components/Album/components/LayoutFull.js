@@ -1,11 +1,11 @@
 import React from 'react';
 import styles from './LayoutFull.scss';
-import MediaItem from './MediaItem';
+import MediaItem from '../Album';
 import {connect} from 'react-redux';
 import uuid from 'uuid';
 import {
   addMedia,
-} from './playlistActions';
+} from '../../../actions/playlistActions';
 
 export class LayoutFull extends React.Component {
   componentWillMount() {
@@ -51,13 +51,11 @@ const mapStateToProps = (state) => {
   }
 };
 
-
 const mapDispatchToProps = (dispatch) => {
   return {
     addItems: (payload) => dispatch(addMedia(payload))
   }
 };
-
 
 const ConnectedLayoutFull = connect(mapStateToProps, mapDispatchToProps)(LayoutFull);
 

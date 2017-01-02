@@ -1,6 +1,6 @@
 import React from 'react';
-import styles from './MediaItem.scss';
-import Playlist from './Playlist';
+import styles from './Album.scss';
+import Playlist from './components/Playlist';
 import uuid from 'uuid';
 
 const MediaItem = ({cover, title, tracks}) => {

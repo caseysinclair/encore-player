@@ -1,6 +1,10 @@
 import {Howl} from 'howler';
 import {duration, progress, play, stop, end, playable} from '../../actions/audioPlayerActions';
+<<<<<<< HEAD:app/components/AudioPlayer/audioApiService.js
 import {currentlyPlaying} from '../media-item/playlistActions';
+=======
+import {currentlyPlaying} from '../../actions/playlistActions';
+>>>>>>> origin/master:app/components/AudioPlayer/audioApiService.js
 import {store} from '../../../main.js';
 
 export let track = null;

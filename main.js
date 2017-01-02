@@ -2,16 +2,25 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
+<<<<<<< HEAD
 import {ConnectedAudioPlayer} from './app/components/AudioPlayer/AudioPlayer';
 import ConnectedLayoutFull from './app/components/media-item/LayoutFull';
 import ConnectedNowPlaying from './app/components/now-playing/NowPlaying';
 
+=======
+import ConnectedAudioPlayer from './app/components/AudioPlayer/AudioPlayer';
+import ConnectedLayoutFull from './app/components/Album/components/LayoutFull';
+>>>>>>> origin/master
 import {applyMiddleware, createStore} from 'redux';
 import thunk from 'redux-thunk';
 import promise from 'redux-promise';
 import createLogger from 'redux-logger';
 import {Provider} from 'react-redux'
+<<<<<<< HEAD
 import reducers from './app/reducers/appReducers';
+=======
+import reducers from './app/reducers/_appReducers';
+>>>>>>> origin/master
 
 const muiTheme = getMuiTheme({
   slider: {

@@ -1,19 +1,29 @@
 .container {
-  bottom: 20px;
   position: fixed;
-  left: 20%;
-  right: 20%;
+  left: 0;
+  right: 0;
+  bottom: 0;
   box-shadow: 0px 2px 2px -3px;
 }
 
 .inner {
   display: flex;
-  flex-direction: row;
+  flex: 0 0 50%;
   justify-content: center;
   padding: 12.5px 7.5px;
 }
 
 .base {
   background-color: #eeeeee;
-  border: solid 1px #cccccc;
+  border-top: solid 1px #cccccc;
+}
+
+.content {
+  display: flex;
+  flex: 0 0 50%;
+  justify-content: space-around;
+}
+
+.bringIn {
+
 }
