@@ -1,5 +1,5 @@
 import {Howl} from 'howler';
-import {duration, progress, play, stop, end, playable} from './actions/audioPlayerActions';
+import {duration, progress, play, stop, end, playable} from '../../actions/audioPlayerActions';
 import {currentlyPlaying} from '../media-item/playlistActions';
 import {store} from '../../../main.js';
 

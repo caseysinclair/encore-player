@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import AudioPlayer from './app/components/audio-player/AudioPlayer';
+import {ConnectedAudioPlayer} from './app/components/AudioPlayer/AudioPlayer';
 import ConnectedLayoutFull from './app/components/media-item/LayoutFull';
 import ConnectedNowPlaying from './app/components/now-playing/NowPlaying';
 
@@ -11,7 +11,7 @@ import thunk from 'redux-thunk';
 import promise from 'redux-promise';
 import createLogger from 'redux-logger';
 import {Provider} from 'react-redux'
-import reducers from './app/appReducers';
+import reducers from './app/reducers/appReducers';
 
 const muiTheme = getMuiTheme({
   slider: {
@@ -53,17 +53,7 @@ const playingnow = document.getElementById('playingnow');
 ReactDOM.render(
   <Provider store={store}>
     <MuiThemeProvider muiTheme={muiTheme}>
-      <AudioPlayer />
+      <ConnectedAudioPlayer />
     </MuiThemeProvider>
 
   </Provider>, container);
-
-ReactDOM.render(
-  <Provider store={store}>
-    <ConnectedLayoutFull items={mediaPayload} />
-  </Provider>, main);
-
-ReactDOM.render(
-  <Provider store={store}>
-    <ConnectedNowPlaying />
-  </Provider>, playingnow);

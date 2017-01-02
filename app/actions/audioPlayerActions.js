@@ -1,3 +1,6 @@
+import {Howl} from 'howler';
+import {store} from '../../main.js';
+
 export const PLAY_AUDIO = 'PLAY_AUDIO';
 export const STOP_AUDIO = 'STOP_AUDIO';
 export const SET_PROGRESS = 'SET_PROGRESS';
@@ -8,6 +11,8 @@ export const AUDIO_TIME = 'AUDIO_TIME';
 export const SET_END = 'SET_END';
 export const IS_PLAYABLE = 'IS_PLAYABLE';
 export const SOURCE_AUDIO = 'SOURCE_AUDIO';
+
+let audio = null;
 
 export function play() {
   return {
@@ -61,15 +66,12 @@ export function setSourceAudio(val) {
   }
 }
 
-
-
 export function setAudioElement(val) {
   return {
     type: AUDIO_ELEMENT,
     val
   }
 }
-
 
 export function setTimer(val) {
   return {
@@ -78,8 +80,60 @@ export function setTimer(val) {
   }
 }
 
-export function updateProgress(setTime) {
-  return function (dispatch) {
-    dispatch(setTimer(setTime));
+export function loadSrc(src) {
+  audio = new Howl({
+    src: [src],
+    usingWebAudio: true,
+    autoplay: false,
+    html5: true,
+    ctx: true,
+    onload: () => {
+      store.dispatch(playable());
+      store.dispatch(duration(audio.duration()))
+    },
+    onend: () => {
+      store.dispatch(end());
+    }
+  });
+
+  return dispatch => dispatch(setSourceAudio(src))
+}
+
+export function playAudio() {
+  startPlayBack();
+
+  return dispatch => {
+    dispatch(play());
+    dispatch(updateCurrentProgress());
   }
 }
+
+function startPlayBack() {
+  audio.play();
+}
+
+function updateCurrentProgress() {
+  const incrementProgress = () => store.dispatch(updateCurrentProgress());
+
+  return dispatch => {
+    if (audio.playing()) {
+      dispatch(progress(audio.seek()));
+      return setTimeout(incrementProgress, 500);
+    }
+  }
+}
+
+export function pauseAudio() {
+  return function (dispatch) {
+    audio.pause();
+    return dispatch(stop())
+  }
+}
+
+export function stopAudio() {
+  return function (dispatch) {
+    audio.stop();
+    return dispatch(stop())
+  }
+}
+

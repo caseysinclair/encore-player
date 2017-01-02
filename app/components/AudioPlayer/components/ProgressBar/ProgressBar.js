@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './ProgressBar.scss';
 import Slider from 'material-ui/Slider';
 import {connect} from 'react-redux';
-import {seekMedia} from './audioApiService';
+import {seekMedia} from '../../audioApiService';
 
 const ProgressBar = ({total, progress}) => {
 
@@ -16,10 +16,10 @@ const ProgressBar = ({total, progress}) => {
   };
 
   const handleTimeFormat = (value) => {
-    if (!value) return;
+    if (!value) return '0:00';
 
-    var min = Math.floor(value / 59, 10).toPrecision(1);
-    var sec = (value % 59).toFixed(0) < 10 ? 0 + (value % 59).toFixed(0) : (value % 59).toFixed(0);
+    const min = Math.floor(value / 59, 10).toPrecision(1);
+    const sec = (value % 59).toFixed(0) < 10 ? 0 + (value % 59).toFixed(0) : (value % 59).toFixed(0);
 
     return min + ':' + sec;
 
