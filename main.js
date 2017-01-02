@@ -28,10 +28,6 @@ const mockTracks = [
     title: 'Song two',
     url: 'https://www.freesound.org/data/previews/353/353025_110287-lq.mp3'
   },
-  {
-    title: 'Song three',
-    url: '//link'
-  }
 ];
 
 

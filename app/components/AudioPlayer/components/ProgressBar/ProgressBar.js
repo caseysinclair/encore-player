@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './ProgressBar.scss';
-import Slider from 'material-ui/Slider';
 import {connect} from 'react-redux';
 
 const ProgressBar = ({total, progress}) => {
@@ -41,15 +40,14 @@ const ProgressBar = ({total, progress}) => {
   };
 
   const renderTrackBar = () => {
+    const sliderStyle = {
+      width: `${(progress / total * 100)}%`,
+    };
+
     if (!progress) return;
 
     return (
-      <Slider
-        className={styles.slider}
-        max={total}
-        value={progress}
-        onDragStop={(e) => seeking(e)}
-      />
+      <span className={styles.track} min={0} style={sliderStyle} value={progress} />
     )
   };
 

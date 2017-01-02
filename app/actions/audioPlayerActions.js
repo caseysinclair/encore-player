@@ -118,7 +118,7 @@ function updateCurrentProgress() {
   return dispatch => {
     if (audio.playing()) {
       dispatch(progress(audio.seek()));
-      return setTimeout(incrementProgress, 500);
+      return setTimeout(incrementProgress, 250);
     }
   }
 }

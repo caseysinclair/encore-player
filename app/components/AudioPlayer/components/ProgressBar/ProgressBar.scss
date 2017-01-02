@@ -1,7 +1,6 @@
 .container {
   display: flex;
-  flex-direction: row;
-  width: 90%;
+  width: 50%;
 }
 
 .timer {
@@ -22,14 +21,6 @@
   display: flex;
   outline: solid 1px #585858;
   border: solid 1px #585858;
-  transition: width 0.1s linear;
-  width: 100%;
-}
-
-.slider {
-  margin: 0 0 !important;
-}
-
-input[type="range"]::-webkit-slider-runnable-track {
+  transition: all 0.3s linear;
   width: 100%;
 }
