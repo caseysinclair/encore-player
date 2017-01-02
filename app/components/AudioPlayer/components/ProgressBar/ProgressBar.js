@@ -2,7 +2,6 @@ import React from 'react';
 import styles from './ProgressBar.scss';
 import Slider from 'material-ui/Slider';
 import {connect} from 'react-redux';
-import {seekMedia} from '../../audioApiService';
 
 const ProgressBar = ({total, progress}) => {
 

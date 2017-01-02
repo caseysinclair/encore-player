@@ -3,7 +3,6 @@ import {
   CURRENTLY_PLAYING,
 } from '../actions/playlistActions';
 
-import uuid from 'uuid';
 
 const init = () => {
   return {

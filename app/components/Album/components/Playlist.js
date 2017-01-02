@@ -1,10 +1,5 @@
 import React from 'react';
 import styles from './Playlist.scss';
-<<<<<<< HEAD:app/components/media-item/Playlist.js
-import {switchMedia} from '../AudioPlayer/audioApiService';
-=======
-import {switchMedia} from '../../AudioPlayer/audioApiService';
->>>>>>> origin/master:app/components/Album/components/Playlist.js
 import {connect} from 'react-redux';
 
 const Playlist = ({tracks, mediaOwner, currentTrack, isMediaOwner, mediaCover}) => {
