@@ -1,42 +1,37 @@
 import React from 'react';
 import styles from './Album.scss';
-import Playlist from './components/Playlist';
-import uuid from 'uuid';
+import Cover from './components/Cover/Cover';
 
-const MediaItem = ({cover, title, tracks}) => {
-  const mediaId = uuid.v4();
-
+const Album = ({cover, title, artist, genre}) => {
   const renderCover = () => {
     return (
-      <div className={styles.block} data-media-id={mediaId}>
-        <img src={cover} className={styles.item}/>
+      <Cover image={cover} />
+    )
+  };
+
+  const renderAlbumDetails = () => {
+    return (
+      <div>
+        <a href="#">{title}</a>
+        <a href="#">{artist}</a>
+        <span>{genre}</span>
       </div>
     )
   };
 
-  const renderPlaylist = () => {
-    return (
-      <div className={styles.block}>
-        <div className={styles.iteminfo}>
-          <h3 className={styles.title}>{title}</h3>
-          <Playlist tracks={tracks} mediaOwner={mediaId} mediaCover={cover}/>
-        </div>
-      </div>
-    )
-  }
-
   return (
     <div className={styles.container}>
       {renderCover()}
-      {renderPlaylist()}
+      {renderAlbumDetails()}
     </div>
   )
 };
 
-MediaItem.PropTypes = {
+Album.propTypes = {
   cover: React.PropTypes.string.isRequired,
   title: React.PropTypes.string.isRequired,
-  mediaId: React.PropTypes.string.isRequired,
+  artist: React.PropTypes.string.isRequired,
+  genre: React.PropTypes.string,
 };
 
-export default MediaItem;
+export default Album;
