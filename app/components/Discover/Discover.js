@@ -1,26 +1,29 @@
 import React from 'react';
-import style from './Discover.scss';
+import styles from './Discover.scss';
 import Album from '../Album/Album';
 
 export default class Discover extends React.Component {
   renderAlbums() {
     const {albums} = this.props;
 
-    albums.map(album => {
+    return albums.map((album, index) => {
       return (
-        <Album
-          cover={album.cover}
-          title={album.title}
-          artist={album.artist}
-          genre={album.genre}
-        />
+        <div className={styles.item}>
+          <Album
+            key={index}
+            cover={album.cover}
+            title={album.title}
+            artist={album.artist}
+            genre={album.genre}
+          />
+        </div>
       )
     });
   }
 
   renderDiscoverGrid() {
     return (
-      <div className={style.grid}>
+      <div>
         {this.renderAlbums()}
       </div>
     )

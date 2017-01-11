@@ -3,9 +3,7 @@ import styles from './Cover.scss';
 
 const Cover = ({image}) => {
   return (
-    <div className={styles.container}>
-      <img src={image} />
-    </div>
+    <img className={styles.cover} src={image}/>
   )
 };
 
