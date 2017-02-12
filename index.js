@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {ConnectedAudioPlayer} from './app/components/AudioPlayer/AudioPlayer';
-import Discover from './app/components/Discover/Discover';
-
+import Discover from 'components/Discover/Discover';
+import {ConnectedAudioPlayer} from 'components/AudioPlayer/AudioPlayer';
+import { Router, Route, Link, browserHistory } from 'react-router'
 import {applyMiddleware, createStore} from 'redux';
 import thunk from 'redux-thunk';
 import promise from 'redux-promise';
@@ -21,13 +21,20 @@ const mediaPayload = [
 
 let logger = createLogger();
 export const store = createStore(reducers, applyMiddleware(thunk, promise, logger));
-
-const container = document.getElementById('root');
 const main = document.getElementById('main');
-const playingnow = document.getElementById('playingnow');
+const player = document.getElementById('player');
+
+
+const DiscoverApp = () => (<Discover albums={mediaPayload}/>);
 
 ReactDOM.render(
-  <Provider store={store}>
-    <Discover albums={mediaPayload} />
-  </Provider>, main
+  <Router history={browserHistory}>
+    <Provider store={store}>
+      <ul>
+        <li><Link to="/">discover</Link></li>
+      </ul>
+    <Route path="/" component={DiscoverApp} />
+      <ConnectedAudioPlayer />
+  </Provider>
+  </Router>, main
 );
