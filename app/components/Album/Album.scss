@@ -1,5 +1,6 @@
 .container {
-  width: 233px;
+  position: relative;
+  width: 100%;
 }
 
 .albumDetails {
@@ -9,7 +10,7 @@
 .item {
   width: 100%;
 }
-n
+
 .iteminfo {
   padding-left: 5px;
 }
@@ -19,6 +20,16 @@ n
   font-size: 1.1em;
 }
 
-.covercontainer {
-  position: relative;
+.artist {
+  display: block;
+  padding: 12px;
+  background-color: rgb(43, 43, 43);
+  color: white;
+  position: absolute;
+  bottom: 7px;
+  left: 7px;
+}
+
+.cover {
+  width: 100%;
 }

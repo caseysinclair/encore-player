@@ -1,5 +1,5 @@
 import {Howl} from 'howler';
-import {store} from '../../main.js';
+import {store} from '../../index.js';
 
 export const PLAY_AUDIO = 'PLAY_AUDIO';
 export const STOP_AUDIO = 'STOP_AUDIO';

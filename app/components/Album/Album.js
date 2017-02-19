@@ -1,20 +1,17 @@
 import React from 'react';
 import styles from './Album.scss';
-import Cover from './components/Cover/Cover';
 
 const Album = ({cover, title, artist, genre}) => {
   const renderCover = () => {
     return (
-      <Cover image={cover} />
+      <img className={styles.cover} src={cover} />
     )
   };
 
   const renderAlbumDetails = () => {
     return (
       <div>
-        <a href="#">{title}</a>
-        <a href="#">{artist}</a>
-        <span>{genre}</span>
+        <span className={styles.artist} href="#">{artist}</span>
       </div>
     )
   };

@@ -21,17 +21,11 @@ export default class Discover extends React.Component {
     });
   }
 
-  renderDiscoverGrid() {
-    return (
-      <div>
-        {this.renderAlbums()}
-      </div>
-    )
-  }
-
   render() {
     return (
-      this.renderDiscoverGrid()
+      <div className={styles.grid}>
+        {this.renderAlbums()}
+      </div>
     )
   }
 }

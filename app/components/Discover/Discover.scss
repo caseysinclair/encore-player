@@ -1,11 +1,13 @@
 .grid {
-  display: flex;
-  flex: 0 0 100%;
-  background-color: #eef2f3;
+  display: block;
+  height: 100vh;
+  justify-content: center;
+  width: 1050px;
+  margin: auto;
 }
 
 .item {
   float: left;
-  width: 23.33%;
-  overflow: hidden;
+  width: 242px;
+  margin: 10px;
 }
